@@ -270,11 +270,11 @@ void Get_error(string& text, string ban, ofstream& f)
         // ПРОВЕРКА НА ТО ЧТО МАТЕМАТИЧЕСКИЕ ЗНАКИ НЕ СТОЯТ РЯДОМ
         for (int i = 0; i < text.length() - 1; i++)
         {
-            if ((text[i] == '(' && text[i + 1] == '-') || (text[i] == '(' && text[i + 1] == ')'))
+            if ((text[i] == '(' && text[i + 1] == '-'))
             {
                 continue;
             }
-            if (ispunct(text[i]) && text[i] != ')' && ispunct(text[i + 1]) && text[i + 1] != '(' && text[i] != '*' && text[i + 1] != '-')     // *- Исключение
+            if ((text[i] == '+' || text[i] == '-' || text[i] == '*' || text[i] == '/') && (text[i+1] == '+' || text[i+1] == '-' || text[i + 1] == '*' || text[i + 1] == '/'))
             {
                 if (error == 0)
                 {
