@@ -298,7 +298,7 @@ void Get_error(string& text, string ban, ofstream& f)
         {
             flag = 1;
         }
-        for (int i = 4; i < text.length() - 1; i++)
+        for (int i = 4; i < text.length(); i++)
         {
             if (text[i] == ')' && isalpha(text[i + 1]))
             {
