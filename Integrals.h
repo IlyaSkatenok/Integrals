@@ -11,7 +11,7 @@
 using namespace std;
 
 
-// Функции для MainMenu
+// Р¤СѓРЅРєС†РёРё РґР»СЏ MainMenu
 void help();
 
 void close();
@@ -19,22 +19,22 @@ void close();
 void EnterFunc();
 //---------------
 
-// Функции для файла с формулой
+// Р¤СѓРЅРєС†РёРё РґР»СЏ С„Р°Р№Р»Р° СЃ С„РѕСЂРјСѓР»РѕР№
 bool isFile();
 
 void CopyFile();
 //--------------
 
-// Функции интегрирования
+// Р¤СѓРЅРєС†РёРё РёРЅС‚РµРіСЂРёСЂРѕРІР°РЅРёСЏ
 double formulaFunc( double x);
 
-double rectangle(double aL, double bH, int Incount);                // Прямоугольники
+double rectangle(double aL, double bH, int Incount);                // РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРё
 
-double trapezoid(double aL, double bH, int Incount);                // Трапеция
+double trapezoid(double aL, double bH, int Incount);                // РўСЂР°РїРµС†РёСЏ
 
-double Simpson(double aL, double bH, int Incount);                  // Симпсон
+double Simpson(double aL, double bH, int Incount);                  // РЎРёРјРїСЃРѕРЅ
 //--------------------------------------------------
 
-// Функция поиска ошибки в формуле
+// Р¤СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° РѕС€РёР±РєРё РІ С„РѕСЂРјСѓР»Рµ
 void Get_error(string &text, string ban, ofstream &f);
 //-------------------------------------------------------------
