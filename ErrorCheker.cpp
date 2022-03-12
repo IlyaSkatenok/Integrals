@@ -157,29 +157,7 @@ void ErrorTrig(string text, int& error, int i)
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void CopyFile()
-{
-    // Создание бекапа файла с предыдущей функцией
-    ifstream orig;
-    ofstream copya;
-
-    orig.open("formula.cpp");
-    copya.open("formula_copy.cpp");
-
-    char buffer[250];
-
-    while (!orig.eof())
-    {
-        orig.getline(buffer, sizeof(buffer));
-        copya << buffer << endl;
-    }
-
-    orig.close();
-    copya.close();
-}
-//----------------------------------------------------
-
-void Get_error(string& text, string ban, ofstream& f)
+void Get_error(string& text, string ban)
 {
     int tmp = 0;
     int error = 0;
@@ -212,12 +190,36 @@ void Get_error(string& text, string ban, ofstream& f)
         }
         //--------------------------------------------------------------------------------------------------------------------------------
         
+        // ПРОВЕРКА НА ТО ЧТО ПЕРВЫЙ СИМВОЛ НЕ ЗНАК
+        if (ispunct(text[0]))
+        {
+            cout << "Математический знак не может стоять в начале формулы" << endl;
+            error = 1;
+        }
+        //--------------------------------------------------------------------------------------------------------------------------------
+
+        // ПРОВЕРКА НА ТО ЧТО ЧИСЛО НЕ СТОИТ ОКОЛО X
+        for (int i = 1 ; i < text.length(); i++)
+        {
+            if (text[i] == 'x' && (isdigit(text[i - 1]) || isdigit(text[i + 1])))
+            {
+                showError(i + 1);
+                cout << "Цифры не могут стоять возле переменной x" << endl;
+                error = 1;
+                break;
+            }
+        }
+        //--------------------------------------------------------------------------------------------------------------------------------
+        
         // ПРОВЕРКА НА ТО ЧТО ЦИФРЫ НЕ СТОЯТ СЛЕВА ОТ ОТКРЫВАЮЩИХ СКОБОК
         for (int i = 0; i < text.length() - 1; i++)
         {
             if (isdigit(text[i]) && text[i + 1] == '(')
             {
-                showError(i + 1);
+                if (error == 0)
+                {
+                    showError(i + 1);
+                }
                 cout << "Цифра не может стоять слева от открывающейся скобки: " << i + 1 << " символ" << endl;
                 error = 1;
                 break;
@@ -428,5 +430,4 @@ void Get_error(string& text, string ban, ofstream& f)
         error = 0;
     } while (tmp == 0);
 
-    f << text;
 }
