@@ -83,11 +83,7 @@ void makeFormula()
     cout << "Запись формулы начата" << endl;
     Get_error(text, ban);
     ofstream f("formula.cpp");
-    f << "#define _USE_MATH_DEFINES" << endl;
     f << "#include \"Integrals.h\"" << endl;
-    f << "double D = 3.1415926535 / 180;"<< endl;
-    f << "#define Pi M_PI" << endl;
-    f << "#define P pow" << endl;
     f << "double formulaFunc(double x){" << endl;
     f << "  return ";
     f << text;
@@ -139,7 +135,7 @@ void readFormula()
     do
     {
         index++;
-        if (index == 7)                                  // Проверка номера строки
+        if (index == 3)                                  // Проверка номера строки
         {
             for (int i = 9; buffer[i] != ';'; i++)
             {
