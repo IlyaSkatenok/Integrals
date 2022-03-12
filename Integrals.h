@@ -1,3 +1,8 @@
+#define _USE_MATH_DEFINES
+#define D = 3.1415926535 / 180;
+#define Pi M_PI
+#define P pow
+
 #include <iostream>
 #include <fstream>
 #include <clocale>
@@ -21,8 +26,6 @@ void EnterFunc();
 
 // Функции для файла с формулой
 bool isFile();
-
-void CopyFile();
 //--------------
 
 // Функции интегрирования
@@ -36,5 +39,5 @@ double Simpson(double aL, double bH, int Incount);                  // Симп�
 //--------------------------------------------------
 
 // Функция поиска ошибки в формуле
-void Get_error(string &text, string ban, ofstream &f);
+void Get_error(string &text, string ban);
 //-------------------------------------------------------------
