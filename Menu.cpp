@@ -77,12 +77,12 @@ void close()
 
 void makeFormula()
 {
-    CopyFile();
     system("cls");
-    cout << "Внимание! Если программа будет экстренно завершена, то НЕОБХОДИМО заменить файл formula.cpp на файл formula_copy.cpp стерев приписку _copy" << endl;
-    ofstream f("formula.cpp");
     string text;
     string ban = "dfjkmuvwyzABCEFGHIJKLMNOQRSTUVWXYZ=|\#@$;%:?&_'<>!~`";
+    cout << "Запись формулы начата" << endl;
+    Get_error(text, ban);
+    ofstream f("formula.cpp");
     f << "#define _USE_MATH_DEFINES" << endl;
     f << "#include \"Integrals.h\"" << endl;
     f << "double D = 3.1415926535 / 180;"<< endl;
@@ -90,11 +90,11 @@ void makeFormula()
     f << "#define P pow" << endl;
     f << "double formulaFunc(double x){" << endl;
     f << "  return ";
-    Get_error(text, ban, f);
+    f << text;
     f << ";\n}";
     f.close();
     system("cls");
-    cout << "ДЛЯ ПРИМЕНЕНИЯ ИЗМЕНЕНИЯ ФУНКЦИИ НЕОБХОДИМО ПЕРЕЗАПУСТИТЬ ПРОГРАММУ!" << endl;
+    cout << "ДЛЯ ПРИМЕНЕНИЯ ИЗМЕНЕНИЯ ФУНКЦИИ НЕОБХОДИМО ПЕРЕСОБРАТЬ ПРОГРАММУ!" << endl;
     system("pause");
 }
 
